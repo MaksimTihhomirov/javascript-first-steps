@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with the DOM</title>
+    <style>
+        ul {
+            background: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="todoInput">
+    
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </ul>
+
+
+    <ul class="todo-list">
+        <li>Go shopping</li>
+        <li>Finish Javascript Screencast</li>
+        <li>Take over world</li>
+    </ul>
+    
+<div class="sidebar">
+    <ul class="todo-list">
+<li>Andre</li>
+<li>Bob</li>
+<li>Sally</li>
+    </ul>
+</div>
+
+<script>
+    const lis = document.querySelectorAll('.todo-list li:first-child');
+    console.log(lis);
+    
+    const sidebarList = document.querySelector('.sidebar .todo-list');
+    console.log(sidebarList);
+
+    const sidebar = document.querySelector('.sidebar');
+    console.log(sidebar);
+
+    const scoped = sidebar.querySelector('.todo-list');
+    console.log(scoped);
+
+    const todoInput2 = document.getElementById('todoInput');
+    console.log(todoInput2);
+
+    const elements = document.getElementsByName('todo-list');
+    console.log(elements);
+</script>
+</body>
+</html>
