@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working wuth the DOM</title>
+</head>
+<body>
+    <ul>
+        <li>Go to the store</li>
+        <li>Finish Javascript screencast</li>
+        <li>Take over world</li>
+        <li class="todo-item flex">
+            <span class="todo-content"Actual todo item></span>
+            <button class="icon">x</button>
+
+        </li>
+    </ul>
+
+    <script>
+        const li = document.createElement('li');
+        li.classList.add('todoItem');
+        li.setAttribute('id', 'todoItem');
+        li.textContent = 'New Todo Item';
+
+        const ul = document.querySelector('ul');
+
+        const li2 = document.createElement('li');
+        // li2.textContent = 'New Todo Item Again';
+        li2.append('New Todo Item Again');
+
+        const image = document.createElement('img');
+
+        image.src = 'https://images.pexels.com/photos/35459530/pexels-photo-35459530.jpeg';
+        image.width = 100;
+        image.alt = 'Cool Photo';
+        ul.append(li, li2);
+
+        document.body.append(image);
+
+        const nodeToClone = document.querySelector('.todo-item');
+        const clonedTodoItem = nodeToClone.cloneNode(true);
+        clonedTodoItem.firstElementChild.textContent = 'Another todo item goes here';
+
+        ul.append(clonedTodoItem);
+        // ul.remove();
+        const anotherLi = document.createElement('li');
+        anotherLi.innerHTML = `<h2>Insert HTML as a string</h2>`;
+
+        ul.append(anotherLi)
+
+        console.log(li);
+    </script>
+</body>
+</html>
