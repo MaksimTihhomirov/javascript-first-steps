@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+</head>
+<body>
+
+  <h1>Character Counter</h1>
+
+  <form>
+    <textarea id="textArea" rows="10" cols="50"></textarea>
+
+    <div id="charactersContainer">
+      Characters:
+      <span id="characters">0</span>
+      /
+      <span id="maxCharacters"></span>
+    </div>
+  </form>
+
+  <script>
+    const textArea = document.querySelector('#textArea');
+    const charactersElement = document.querySelector('#characters');
+    const maxCharactersElement = document.querySelector('#maxCharacters');
+    const charactersContainer = document.querySelector('#charactersContainer');
+
+    const maxCharacters = 100;
+    let characters = 0;
+
+    maxCharactersElement.textContent = maxCharacters;
+
+    textArea.addEventListener('input', event => {
+      characters = event.target.value.length;
+
+      charactersElement.textContent = characters;
+
+      if (characters > maxCharacters) {
+        charactersContainer.style.color = 'red';
+      } else {
+        charactersContainer.style.color = 'black';
+      }
+    });
+  </script>
+
+</body>
+</html>
