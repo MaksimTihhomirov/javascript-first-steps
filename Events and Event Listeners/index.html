@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working with the DOM</title>
+</head>
+<body>
+
+  <h2>Todo List</h2>
+
+  <ul>
+    <li>
+      <span>Go to the store</span>
+      <button class="edit-todo">Edit</button>
+    </li>
+    <li>
+      <span>Finish JavaScript screencast</span>
+      <button class="edit-todo">Edit</button>
+    </li>
+    <li>
+      <span>Take over world</span>
+      <button class="edit-todo">Edit</button>
+    </li>
+  </ul>
+
+  <button class="clear-todos">Clear all todos</button>
+
+  <br>
+
+  <a href="https://laracasts.com" class="link">Laracasts</a>
+
+  <form id="my-form">
+    <input type="text" id="my-input" placeholder="First Name">
+
+    <br>
+
+    <select id="my-select">
+      <option value="honda">Honda</option>
+      <option value="toyota">Toyota</option>
+      <option value="bmw">BMW</option>
+    </select>
+
+    <br>
+
+    <label>
+      <input type="radio" name="language" value="HTML">
+      HTML
+    </label>
+
+    <br>
+
+    <label>
+      <input type="radio" name="language" value="CSS">
+      CSS
+    </label>
+
+    <br>
+
+    <label>
+      <input type="radio" name="language" value="JavaScript">
+      JavaScript
+    </label>
+
+    <br>
+
+    <button type="submit">Submit Form</button>
+  </form>
+
+  <script>
+    const clearButton = document.querySelector('.clear-todos');
+    const link = document.querySelector('.link');
+    const myInput = document.querySelector('#my-input');
+    const mySelect = document.querySelector('#my-select');
+    const myForm = document.querySelector('#my-form');
+    const editButtons = document.querySelectorAll('.edit-todo');
+
+    function handleClick(event) {
+      console.log('clicked');
+    }
+
+    clearButton.addEventListener('click', handleClick);
+
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      console.log('link was clicked');
+    });
+
+    myInput.addEventListener('keyup', function(event) {
+      console.log(event.target.value);
+    });
+
+    myInput.addEventListener('blur', function(event) {
+      console.log('I was blurred');
+    });
+
+    mySelect.addEventListener('change', function(event) {
+      console.log(event.target.value);
+    });
+
+    myForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      console.log('processing the form');
+
+      myForm.submit();
+    });
+
+    editButtons.forEach(editButton => {
+      editButton.addEventListener('click', function(event) {
+        console.log('edit button clicked');
+      });
+    });
+  </script>
+
+</body>
+</html>
