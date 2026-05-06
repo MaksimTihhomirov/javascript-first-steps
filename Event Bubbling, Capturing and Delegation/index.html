@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working with the DOM</title>
+</head>
+<body>
+
+  <section style="background: red; padding: 20px;">
+    section
+
+    <div style="background: green; padding: 20px;">
+      div
+
+      <p style="background: blue; color: white; padding: 20px;">
+        p
+      </p>
+    </div>
+  </section>
+
+  <ul>
+    <li>
+      <span>Go to the store</span>
+      <button class="delete-todo">
+        <strong>Delete</strong>
+      </button>
+    </li>
+
+    <li>
+      <span>Finish JavaScript screencast</span>
+      <button class="delete-todo">
+        <strong>Delete</strong>
+      </button>
+    </li>
+
+    <li>
+      <span>Take over world</span>
+      <button class="delete-todo">
+        <strong>Delete</strong>
+      </button>
+    </li>
+  </ul>
+
+  <script>
+    const section = document.querySelector('section');
+    const div = document.querySelector('div');
+    const p = document.querySelector('p');
+
+    section.addEventListener('click', function(event) {
+      console.log('section');
+      console.log('event target is', event.target);
+      console.log('event current target is', event.currentTarget);
+    }, true);
+
+    div.addEventListener('click', function(event) {
+      console.log('div');
+      console.log('event target is', event.target);
+      console.log('event current target is', event.currentTarget);
+    }, true);
+
+    p.addEventListener('click', function(event) {
+      console.log('p');
+      console.log('event target is', event.target);
+      console.log('event current target is', event.currentTarget);
+    }, true);
+
+    const todoList = document.querySelector('ul');
+
+    todoList.addEventListener('click', function(event) {
+      const deleteButton = event.target.closest('.delete-todo');
+
+      if (!deleteButton) {
+        return;
+      }
+
+      if (deleteButton.classList.contains('delete-todo')) {
+        console.log('button was clicked');
+      }
+    });
+  </script>
+
+</body>
+</html>
