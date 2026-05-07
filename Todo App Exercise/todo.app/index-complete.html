@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Todo App</title>
+
+  <link rel="stylesheet" href="./todo-app.css" />
+</head>
+
+<body>
+
+  <div class="todo-app-container">
+    <div class="todo-app">
+
+      <h2>Todo App</h2>
+
+      <form id="todoForm">
+        <input
+          type="text"
+          class="todo-input"
+          id="todoInput"
+          placeholder="What do you need to do?"
+        />
+      </form>
+
+      <ul class="todo-list" id="todoList">
+
+        <li class="todo-item">
+          <input type="checkbox" />
+
+          <span>Finish JavaScript Series</span>
+
+          <button class="x-button">×</button>
+        </li>
+
+      </ul>
+
+      <p class="items-remaining" id="itemsRemaining">
+        1 item remaining
+      </p>
+
+    </div>
+  </div>
+
+<script>
+
+const todoForm = document.querySelector('#todoForm');
+const todoInput = document.querySelector('#todoInput');
+const todoList = document.querySelector('#todoList');
+const itemsRemaining = document.querySelector('#itemsRemaining');
+
+function updateItemsRemaining() {
+  const uncheckedItems =
+    todoList.querySelectorAll('input[type="checkbox"]:not(:checked)').length;
+
+  itemsRemaining.textContent =
+    `${uncheckedItems} item remaining`;
+}
+
+todoForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const inputValue = todoInput.value.trim();
+
+  if (inputValue === '') {
+    return;
+  }
+
+  const li = document.createElement('li');
+  li.classList.add('todo-item');
+
+  li.innerHTML = `
+    <input type="checkbox" />
+    <span>${inputValue}</span>
+    <button class="x-button">×</button>
+  `;
+
+  todoList.appendChild(li);
+
+  todoInput.value = '';
+
+  updateItemsRemaining();
+});
+
+todoList.addEventListener('click', event => {
+
+  if (event.target.classList.contains('x-button')) {
+    event.target.parentElement.remove();
+
+    updateItemsRemaining();
+  }
+
+  if (event.target.type === 'checkbox') {
+
+    const span =
+      event.target.parentElement.querySelector('span');
+
+    if (event.target.checked) {
+      span.classList.add('line-through');
+    } else {
+      span.classList.remove('line-through');
+    }
+
+    updateItemsRemaining();
+  }
+
+});
+
+updateItemsRemaining();
+
+</script>
+
+</body>
+</html>
