@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>External Libraries</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      padding: 40px;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background: limegreen;
+      margin-top: 20px;
+    }
+
+   canvas {
+  margin-top: 40px;
+  width: 1400px !important;
+  height: 700px !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>External Libraries</h1>
+
+  <!-- Bootstrap Modal Button -->
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Launch demo modal
+  </button>
+
+  <!-- Animate Button -->
+  <button id="animate">Animate</button>
+
+  <!-- Green Box -->
+  <div class="box"></div>
+
+  <!-- Expand Button -->
+  <button id="expand">Expand</button>
+
+  <!-- Chart -->
+  <canvas id="myChart"></canvas>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          Hello from Bootstrap modal!
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/lodash/lodash.min.js"></script>
+
+  <script>
+    // Lodash examples
+    console.log(_.partition([1, 2, 3, 4], n => n % 2));
+
+    console.log(_.flattenDeep([1, [2, [3, [4], 5]]]));
+
+    // Animate button
+    document.querySelector('#animate')
+      .addEventListener('click', () => {
+
+        gsap.to('.box', {
+          rotation: 360,
+          x: 200,
+          duration: 1
+        });
+
+      });
+
+    // Expand button
+    document.querySelector('#expand')
+      .addEventListener('click', () => {
+
+        gsap.to('.box', {
+          width: 400,
+          height: 400,
+          duration: 1
+        });
+
+      });
+
+    // Chart.js
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July'
+    ];
+
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: 'My First Dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 10, 5, 2, 20, 30, 45]
+        }
+      ]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+
+    new Chart(
+      document.querySelector('#myChart'),
+      config
+    );
+  </script>
+
+</body>
+</html>
